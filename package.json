@@ -1,0 +1,26 @@
+{
+  "name": "anon-chat-cos720",
+  "version": "1.0.0",
+  "description": "Anonymous chatroom server for COS720",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jared2710/anon-chat-cos720.git"
+  },
+  "author": "Jared O'Reilly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jared2710/anon-chat-cos720/issues"
+  },
+  "homepage": "https://github.com/jared2710/anon-chat-cos720#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "8.x"
+  }
+}
