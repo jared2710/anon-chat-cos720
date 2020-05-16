@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var port = process.env.PORT || 4000;
 
 app.get("/", (req, res) =>
 {	
@@ -15,7 +16,7 @@ app.post("/", (req, res) =>
 	console.log("Replied to POST request for /");
 });
 
-app.listen(4000, () =>
+app.listen(port, () =>
 {
-	console.log("Server running on port 4000");
+	console.log("Server running on port " + port);
 });
