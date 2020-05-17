@@ -71,7 +71,7 @@ function writeJsonToTextfile(json, filename)
 
 function getChatroomMessages(chatroom)
 {
-	var chatroomFilename = "room_" + chatroom + ".json";
+	var chatroomFilename = "chatroom_" + chatroom + ".json";
 	console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = getJsonFromTextfile(chatroomFilename);
 	console.log(chatroomData);
@@ -80,7 +80,7 @@ function getChatroomMessages(chatroom)
 
 function addMessageToChatroom(chatroom, message)
 {
-	var chatroomFilename = "room_" + chatroom + ".json";
+	var chatroomFilename = "chatroom_" + chatroom + ".json";
 	console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = getJsonFromTextfile(chatroomFilename);
 	console.log(chatroomData);
