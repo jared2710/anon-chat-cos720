@@ -98,7 +98,7 @@ function getAllChatroomFilenames()
 {
 	var filenames = glob.sync("./chatroom_*.json");
 	console.log(filenames);
-	return filename;
+	return filenames;
 }
 
 
