@@ -94,7 +94,7 @@ function addMessageToChatroom(chatroom, message)
 	return true;
 }
 
-function getAllChatroomNames()
+function getAllChatroomFilenames()
 {
 	var filenames = glob.sync("./chatroom_*.json");
 	console.log(filenames);
@@ -135,7 +135,7 @@ function getAllChatroomNames(auth, json, res)
 	console.log("auth: " + auth);
 	console.log("json: " + json);
 
-	var result = getAllChatroomNames();
+	var result = getAllChatroomFilenames();
 
 	respond(res, result);
 }
