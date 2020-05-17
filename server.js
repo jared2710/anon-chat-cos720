@@ -2,18 +2,18 @@ var express = require("express");
 var app = express();
 var port = process.env.PORT || 4000;
 
+app.use(express.json());
+
 app.get("/", (req, res) =>
 {	
-	console.log("Got GET request for /");
-	res.json({"response" : "hello"});
-	console.log("Replied to GET request for /");
+	res.json({"status" : 0, "data" : "GET requests are not permitted"});
 });
 
 app.post("/", (req, res) =>
 {
-	console.log("Got POST request for /");
+	console.log(req);
+	console.log(req.body);
 	res.json({"response" : "hello"});
-	console.log("Replied to POST request for /");
 });
 
 app.listen(port, () =>
