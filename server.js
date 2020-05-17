@@ -17,24 +17,30 @@ app.get("/", (req, res) =>
 app.post("/", (req, res) =>
 {
 	var json = req.body;
-	var auth = "123456";//json.auth;
-	var type = json.type;
-	
-	switch(type)
+	var auth = json.auth;
+	if(isValidAuth(auth))
 	{
-		case "sendMessage":
-			sendMessage(auth, json, res);
-			break;
-		case "getAllMessages":
-			getAllMessages(auth, json, res);
-			break;
-		case "getAllChatroomNames":
-			getAllChatroomNames(auth, json, res);
-			break;
-		default:
-			res.json({"status" : 0, "data" : "Invalid type for API"});
+		var type = json.type;
+		
+		switch(type)
+		{
+			case "sendMessage":
+				sendMessage(auth, json, res);
+				break;
+			case "getAllMessages":
+				getAllMessages(auth, json, res);
+				break;
+			case "getAllChatroomNames":
+				getAllChatroomNames(auth, json, res);
+				break;
+			default:
+				error(res, "Invalid type for API");
+		}
 	}
-	
+	else
+	{
+		error(res, "Authorization failed");
+	}
 	
 });
 
@@ -64,6 +70,29 @@ function chatroomFilenameToChatroomName(chatroomFilename)
 {
 	return chatroomFilename.substring(chatroomFilename.indexOf("_")+1, chatroomFilename.indexOf("."));
 }
+
+
+
+//validation functions
+function isValidAuth(auth)
+{
+	return true;
+}
+
+function isValidChatroom(chatroom)
+{
+	var filenames = getAllChatroomFilenames();
+	var names = chatroomFilenamesToChatroomNames(filenames);
+	for(var i = 0; i < names.length; i++)
+	{
+		if(names[i] === chatroom)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 
 //textfile functions
 function getJsonFromTextfile(filename)
@@ -132,10 +161,16 @@ function sendMessage(auth, json, res)
 	console.log("json: " + json);
 
 	var chatroom = json.chatroom;
-	var message = json.message;
-	var result = addMessageToChatroom(chatroom, message);
-
-	respond(res, "Message sent: " + result);
+	if(isValidChatroom(chatroom))
+	{
+		var message = json.message;
+		var result = addMessageToChatroom(chatroom, message);
+		respond(res, "Message sent: " + result);
+	}
+	else
+	{
+		error(res, "Invalid chatroom");
+	}
 }
 
 function getAllMessages(auth, json, res)
@@ -145,9 +180,15 @@ function getAllMessages(auth, json, res)
 	console.log("json: " + json);
 
 	var chatroom = json.chatroom;
-	var result = getChatroomMessages(chatroom);
-
-	respond(res, result);
+	if(isValidChatroom(chatroom))
+	{
+		var result = getChatroomMessages(chatroom);
+		respond(res, result);
+	}
+	else
+	{
+		error(res, "Invalid chatroom");
+	}
 }
 
 function getAllChatroomNames(auth, json, res)
