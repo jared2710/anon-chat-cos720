@@ -55,6 +55,16 @@ function error(res, message)
 	res.json({"status" : 0, "data" : message});
 }
 
+function chatroomNameToChatroomFilename(chatroomName)
+{
+	return "chatroom_" + chatroomName + ".json";
+}
+
+function chatroomFilenameToChatroomName(chatroomFilename)
+{
+	return chatroomFilename.substring(chatroomFilename.indexOf("_")+1, chatroomFilename.indexOf("."));
+}
+
 //textfile functions
 function getJsonFromTextfile(filename)
 {
@@ -75,7 +85,7 @@ function writeJsonToTextfile(json, filename)
 
 function getChatroomMessages(chatroom)
 {
-	var chatroomFilename = "chatroom_" + chatroom + ".json";
+	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = getJsonFromTextfile(chatroomFilename);
 	console.log(chatroomData);
@@ -84,7 +94,7 @@ function getChatroomMessages(chatroom)
 
 function addMessageToChatroom(chatroom, message)
 {
-	var chatroomFilename = "chatroom_" + chatroom + ".json";
+	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = getJsonFromTextfile(chatroomFilename);
 	console.log(chatroomData);
@@ -96,9 +106,19 @@ function addMessageToChatroom(chatroom, message)
 
 function getAllChatroomFilenames()
 {
-	var filenames = glob.sync("./chatroom_*.json");
+	var filenames = glob.sync("chatroom_*.json");
 	console.log(filenames);
 	return filenames;
+}
+
+function chatroomFilenamesToChatroomNames(filenames)
+{
+	var names = [];
+	for(var i = 0; i < filenames.length; i++)
+	{
+		names.push(chatroomFilenameToChatroomName(filenames[i]));
+	}
+	return names;
 }
 
 
@@ -135,9 +155,10 @@ function getAllChatroomNames(auth, json, res)
 	console.log("auth: " + auth);
 	console.log("json: " + json);
 
-	var result = getAllChatroomFilenames();
+	var filenames = getAllChatroomFilenames();
+	var names = chatroomFilenamesToChatroomNames(filenames);
 
-	respond(res, result);
+	respond(res, names);
 }
 
 
