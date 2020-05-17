@@ -11,8 +11,23 @@ app.get("/", (req, res) =>
 
 app.post("/", (req, res) =>
 {
-	console.log(req.body);
-	res.json({"status" : 1, "data" : req.body});
+	var json = req.body;
+	
+	switch(json.type)
+	{
+		case "sendMessage":
+			console.log("Send message");
+			res.json({"status" : 1, "data" : req.body});
+			break;
+		case "getAllMessages":
+			console.log("Get all messages");
+			res.json({"status" : 1, "data" : req.body});
+			break;
+		default:
+			res.json({"status" : 0, "data" : "Invalid type for API"});
+	}
+	
+	
 });
 
 app.listen(port, () =>
