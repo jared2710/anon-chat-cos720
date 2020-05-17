@@ -71,6 +71,15 @@ function chatroomFilenameToChatroomName(chatroomFilename)
 	return chatroomFilename.substring(chatroomFilename.indexOf("_")+1, chatroomFilename.indexOf("."));
 }
 
+function currentDate()
+{
+	var d = new Date();
+
+    	d = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + d.getDate()).slice(-2) + " " + ('0' + d.getHours()).slice(-2) + ":" + ('0' + d.getMinutes()).slice(-2) + ":" + ('0' + d.getSeconds()).slice(-2);
+
+    	return d;
+}
+
 
 
 //validation functions
@@ -127,7 +136,7 @@ function addMessageToChatroom(chatroom, message)
 	console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = getJsonFromTextfile(chatroomFilename);
 	console.log(chatroomData);
-	chatroomData.messages.push({"message":message});
+	chatroomData.messages.push({"time": currentDate(), "message":message});
 	console.log(chatroomData);
 	writeJsonToTextfile(chatroomData, chatroomFilename);
 	return true;
