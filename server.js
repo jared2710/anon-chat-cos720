@@ -130,13 +130,13 @@ function getChatroomMessages(chatroom)
 	return chatroomData.messages;
 }
 
-function addMessageToChatroom(chatroom, message)
+function addMessageToChatroom(auth, chatroom, message)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = getJsonFromTextfile(chatroomFilename);
 	console.log(chatroomData);
-	chatroomData.messages.push({"time": currentDate(), "message":message});
+	chatroomData.messages.push({"time": currentDate(), "user" : auth, "message":message});
 	console.log(chatroomData);
 	writeJsonToTextfile(chatroomData, chatroomFilename);
 	return true;
@@ -173,7 +173,7 @@ function sendMessage(auth, json, res)
 	if(isValidChatroom(chatroom))
 	{
 		var message = json.message;
-		var result = addMessageToChatroom(chatroom, message);
+		var result = addMessageToChatroom(auth, chatroom, message);
 		respond(res, "Message sent: " + result);
 	}
 	else
