@@ -3,6 +3,7 @@ var app = express();
 var port = process.env.PORT || 4000;
 
 var fs = require("fs");
+var glob = require("glob");
 
 
 //app boiler plate code
@@ -26,6 +27,9 @@ app.post("/", (req, res) =>
 			break;
 		case "getAllMessages":
 			getAllMessages(auth, json, res);
+			break;
+		case "getAllChatroomNames":
+			getAllChatroomNames(auth, json, res);
 			break;
 		default:
 			res.json({"status" : 0, "data" : "Invalid type for API"});
@@ -90,6 +94,13 @@ function addMessageToChatroom(chatroom, message)
 	return true;
 }
 
+function getAllChatroomNames()
+{
+	var filenames = glob.sync("./chatroom_*.json");
+	console.log(filenames);
+	return filename;
+}
+
 
 
 //request type methods
@@ -114,6 +125,17 @@ function getAllMessages(auth, json, res)
 
 	var chatroom = "veryniceroom";//json.chatroom;
 	var result = getChatroomMessages(chatroom);
+
+	respond(res, result);
+}
+
+function getAllChatroomNames(auth, json, res)
+{
+	console.log("Get all chatrooms");
+	console.log("auth: " + auth);
+	console.log("json: " + json);
+
+	var result = getAllChatroomNames();
 
 	respond(res, result);
 }
