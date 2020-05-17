@@ -11,9 +11,8 @@ app.get("/", (req, res) =>
 
 app.post("/", (req, res) =>
 {
-	console.log(req);
 	console.log(req.body);
-	res.json({"response" : "hello"});
+	res.json({"status" : 1, "data" : req.body});
 });
 
 app.listen(port, () =>
