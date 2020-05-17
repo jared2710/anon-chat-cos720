@@ -131,7 +131,7 @@ function sendMessage(auth, json, res)
 	console.log("auth: " + auth);
 	console.log("json: " + json);
 
-	var chatroom = "veryniceroom";//json.chatroom;
+	var chatroom = json.chatroom;
 	var message = json.message;
 	var result = addMessageToChatroom(chatroom, message);
 
@@ -144,7 +144,7 @@ function getAllMessages(auth, json, res)
 	console.log("auth: " + auth);
 	console.log("json: " + json);
 
-	var chatroom = "veryniceroom";//json.chatroom;
+	var chatroom = json.chatroom;
 	var result = getChatroomMessages(chatroom);
 
 	respond(res, result);
