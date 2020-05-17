@@ -118,6 +118,7 @@ function chatroomFilenamesToChatroomNames(filenames)
 	{
 		names.push(chatroomFilenameToChatroomName(filenames[i]));
 	}
+	console.log(names);
 	return names;
 }
 
