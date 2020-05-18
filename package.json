@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jared2710/anon-chat-cos720#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "glob": "^7.1.6"

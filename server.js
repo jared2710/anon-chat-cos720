@@ -4,6 +4,7 @@ var port = process.env.PORT || 4000;
 
 var fs = require("fs");
 var glob = require("glob");
+var crypto = require("crypto");
 
 
 //app boiler plate code
@@ -82,7 +83,7 @@ function currentDate()
 
 
 
-//validation functions
+//validation and auth functions
 function isValidAuth(auth)
 {
 	return true;
@@ -100,6 +101,27 @@ function isValidChatroom(chatroom)
 		}
 	}
 	return false;
+}
+
+function sha256(text)
+{
+	return crypto.createHash('sha256').update(text).digest('hex');
+}
+
+function authStringToUsername(auth)
+{
+	var hash = sha256(auth);
+	console.log(hash);
+	return hash;
+}
+
+function stripRealAuth(messages)
+{
+	for(var i = 0; i < messages.length; i++)
+	{
+		messages[i].auth = authStringToUsername(messages[i].auth);
+	}
+	return messages;
 }
 
 
@@ -192,6 +214,7 @@ function getAllMessages(auth, json, res)
 	if(isValidChatroom(chatroom))
 	{
 		var result = getChatroomMessages(chatroom);
+		result = stripRealAuth(result);
 		respond(res, result);
 	}
 	else
