@@ -114,6 +114,12 @@ function authStringToUsername(auth)
 	console.log(hash);
 	hash = hash.substring(0, 10);
 	console.log(hash);
+	for(var i = 0; i < hash.length; i++)
+	{
+		console.log(hash[i]);
+		hash[i] = i+"";
+		console.log(hash[i]);
+	}
 	return hash;
 }
 
