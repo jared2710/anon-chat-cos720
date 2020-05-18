@@ -150,7 +150,7 @@ If you opened up a port on your firewall using ufw, e.g. port 4000, you can clos
 sudo ufw delete allow 4000      # open port 4000, the default port for this server
 ```
 
-Finally, navigate to the directory that contains the cloned anon-chat-local-cos720 directory, and run the following command to delete the anon-chat-local-cos720 directory:
+Finally, navigate to the directory that contains the cloned anon-chat-cos720 directory, and run the following command to delete the anon-chat-cos720 directory:
 
 ```bash
 rm -rf anon-chat-cos720         # delete the directory cloned to this machine
