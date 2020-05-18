@@ -37,6 +37,7 @@ This is an HTTP API server, so once we install and run it as above, we can inter
 - Specifically, only POST requests can be used, any other requests (like GET) will fail.
 - All POST requests should be directed at the endpoint /, like myserver.com/ or 123.456.789.123/. 
 - JSON should be sent in the body of the POST request, so the content type heading should be application/json. 
+
 The possible request types are specified below:
 
 ### getAllChatroomNames 
