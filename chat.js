@@ -6,63 +6,77 @@ var CHAT = require('./chat');
 
 //functions for chatroom file interaction
 
+var chatroomNameToChatroomFilename = function (chatroomName)
+{
+	return "chatroom_" + chatroomName + ".json";
+}
+
+var chatroomFilenameToChatroomName = function (chatroomFilename)
+{
+	return chatroomFilename.substring(chatroomFilename.indexOf("_")+1, chatroomFilename.indexOf("."));
+}
+
+var currentDate = function ()
+{
+	var d = new Date();
+
+    	d = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + d.getDate()).slice(-2) + " " + ('0' + d.getHours()).slice(-2) + ":" + ('0' + d.getMinutes()).slice(-2) + ":" + ('0' + d.getSeconds()).slice(-2);
+
+    	return d;
+}
+
+var getChatroomMessages = function (chatroom)
+{
+	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
+	console.log("chatroomFilename: " + chatroomFilename);
+	var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
+	console.log(chatroomData);
+	return chatroomData.messages;
+}
+
+var addMessageToChatroom = function (auth, chatroom, message)
+{
+	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
+	console.log("chatroomFilename: " + chatroomFilename);
+	var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
+	console.log(chatroomData);
+	chatroomData.messages.push({"time":currentDate(), "user":auth, "message":message});
+	console.log(chatroomData);
+	FILE.writeJsonToTextfile(chatroomData, chatroomFilename);
+	return true;
+}
+
+var getAllChatroomFilenames = function ()
+{
+	var filenames = glob.sync("chatroom_*.json");
+	console.log(filenames);
+	return filenames;
+}
+
+var chatroomFilenamesToChatroomNames = function (filenames)
+{
+	var names = [];
+	for(var i = 0; i < filenames.length; i++)
+	{
+		names.push(chatroomFilenameToChatroomName(filenames[i]));
+	}
+	console.log(names);
+	return names;
+}
+
 module.exports =
 {
-	chatroomNameToChatroomFilename: function (chatroomName)
-	{
-		return "chatroom_" + chatroomName + ".json";
-	},
+	chatroomNameToChatroomFilename: chatroomNameToChatroomFilename,
 
-	chatroomFilenameToChatroomName: function (chatroomFilename)
-	{
-		return chatroomFilename.substring(chatroomFilename.indexOf("_")+1, chatroomFilename.indexOf("."));
-	},
+	chatroomFilenameToChatroomName: chatroomFilenameToChatroomName,
 
-	currentDate: function ()
-	{
-		var d = new Date();
+	currentDate: currentDate,
 
-	    	d = d.getFullYear() + "-" + ('0' + (d.getMonth() + 1)).slice(-2) + "-" + ('0' + d.getDate()).slice(-2) + " " + ('0' + d.getHours()).slice(-2) + ":" + ('0' + d.getMinutes()).slice(-2) + ":" + ('0' + d.getSeconds()).slice(-2);
+	getChatroomMessages: getChatroomMessages,
 
-	    	return d;
-	},
+	addMessageToChatroom: addMessageToChatroom,
 
-	getChatroomMessages: function (chatroom)
-	{
-		var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
-		console.log("chatroomFilename: " + chatroomFilename);
-		var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
-		console.log(chatroomData);
-		return chatroomData.messages;
-	},
+	getAllChatroomFilenames: getAllChatroomFilenames,
 
-	addMessageToChatroom: function (auth, chatroom, message)
-	{
-		var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
-		console.log("chatroomFilename: " + chatroomFilename);
-		var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
-		console.log(chatroomData);
-		chatroomData.messages.push({"time": currentDate(), "user" : auth, "message":message});
-		console.log(chatroomData);
-		FILE.writeJsonToTextfile(chatroomData, chatroomFilename);
-		return true;
-	},
-
-	getAllChatroomFilenames: function ()
-	{
-		var filenames = glob.sync("chatroom_*.json");
-		console.log(filenames);
-		return filenames;
-	},
-
-	chatroomFilenamesToChatroomNames: function (filenames)
-	{
-		var names = [];
-		for(var i = 0; i < filenames.length; i++)
-		{
-			names.push(chatroomFilenameToChatroomName(filenames[i]));
-		}
-		console.log(names);
-		return names;
-	}
+	chatroomFilenamesToChatroomNames: chatroomFilenamesToChatroomNames
 }
