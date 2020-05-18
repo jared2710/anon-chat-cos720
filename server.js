@@ -119,7 +119,7 @@ function stripRealAuth(messages)
 {
 	for(var i = 0; i < messages.length; i++)
 	{
-		messages[i].auth = authStringToUsername(messages[i].auth);
+		messages[i].user = authStringToUsername(messages[i].user);
 	}
 	return messages;
 }
