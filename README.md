@@ -19,7 +19,7 @@ sudo apt install nodejs npm     # both installed in one command
 If you do not have git installed already on your Ubuntu machine, you can install it with:
 ```bash
 sudo apt update
-sudo apt install git          # only pro coders install this bad boy
+sudo apt install git            # only pro coders install this bad boy
 ```
 
 If you are setting up on a server you have full control over (not like Heroku), you will need to open up ports on your firewall to allow traffic into and out of this application. On Ubuntu, which uses [ufw](https://help.ubuntu.com/community/UFW), you could open these ports up like this:
@@ -149,14 +149,14 @@ sudo apt purge nodejs npm       # completely remove nodejs and npm and all confi
 
 You will probably want to keep git installed, but in case you don't, you can uninstall it like this:
 ```bash
-sudo apt remove git           # remove git but keep configuration files
+sudo apt remove git             # remove git but keep configuration files
 -- OR --
-sudo apt purge git            # completely remove git and all configuration files
+sudo apt purge git              # completely remove git and all configuration files
 ```
 
 A bunch of packages will not be explicity uninstalled from this removal/purging, and they may not be needed by any other packages you have installed. You can automatically remove them using apt's autoremove command, like so:
 ```bash
-sudo apt autoremove           # remove any of the leftover packages
+sudo apt autoremove             # remove any of the leftover packages
 ```
 
 If you opened up a port on your firewall using ufw, e.g. port 4000, you can close that port with the following command:
