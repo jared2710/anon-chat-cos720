@@ -23,7 +23,7 @@ var currentDate = function ()
     	return d;
 }
 
-var getChatroomMessages = function (chatroom, FILE)
+var getChatroomMessages = function (chatroom)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
@@ -32,7 +32,7 @@ var getChatroomMessages = function (chatroom, FILE)
 	return chatroomData.messages;
 }
 
-var addMessageToChatroom = function (auth, chatroom, message, FILE)
+var addMessageToChatroom = function (auth, chatroom, message)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
