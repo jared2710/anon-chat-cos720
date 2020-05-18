@@ -33,11 +33,11 @@ node server
 ```
 
 ## Usage
-This is an HTTP API server, so once we install and run it as above, we can interfact with it using HTTP requests. The possible request types are specified below:
+This is an HTTP API server, so once we install and run it as above, we can interfact with it using HTTP requests. Specifically, only POST requests can be used, any other requests (like GET) will fail. All POST requests should be directed at the endpoint /, e.g. myserver.com/ or 123.456.789.123/. JSON should be sent in the body of the POST request, so the content type heading should be application/json. The possible request types are specified below:
 
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+Type | Required fields | Example JSON  | Response |
+--- | --- | --- | --- |
+getAllChatroomNames | auth | {"type" : "getAllChatroomNames", "auth" : "123456789012345678901234567890123456789012345678901234567890"} | ["room1, "room2", "room3] |
 
 
 ## Contribution
