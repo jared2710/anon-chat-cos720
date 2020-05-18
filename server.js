@@ -114,13 +114,66 @@ function authStringToUsername(auth)
 	console.log(hash);
 	hash = hash.substring(0, 10);
 	console.log(hash);
+	var username = "";
 	for(var i = 0; i < hash.length; i++)
 	{
 		console.log(hash[i]);
-		hash[i] = i+"";
-		console.log(hash[i]);
+		var toAdd = "";
+		switch(hash[i])
+		{
+			case "0":
+				toAdd = "a";
+				break;
+			case "1":
+				toAdd = "b";
+				break;
+			case "2":
+				toAdd = "c";
+				break;
+			case "3":
+				toAdd = "d";
+				break;
+			case "4":
+				toAdd = "e";
+				break;
+			case "5":
+				toAdd = "f";
+				break;
+			case "6":
+				toAdd = "g";
+				break;
+			case "7":
+				toAdd = "h";
+				break;
+			case "8":
+				toAdd = "i";
+				break;
+			case "9":
+				toAdd = "j";
+				break;
+			case "a":
+				toAdd = "k";
+				break;
+			case "b":
+				toAdd = "l";
+				break;
+			case "c":
+				toAdd = "m";
+				break;
+			case "d":
+				toAdd = "n";
+				break;
+			case "e":
+				toAdd = "o";
+				break;
+			case "f":
+				toAdd = "p";
+				break;
+			
+		}
+		username += toAdd;
 	}
-	return hash;
+	return username;
 }
 
 function stripRealAuth(messages)
