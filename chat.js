@@ -33,7 +33,7 @@ var getChatroomMessages = function (chatroom, FILE)
 	return chatroomData.messages;
 }
 
-var addMessageToChatroom = function (auth, chatroom, message)
+var addMessageToChatroom = function (auth, chatroom, message, FILE)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
