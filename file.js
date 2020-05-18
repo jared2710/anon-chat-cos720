@@ -1,8 +1,5 @@
 var fs = require("fs");
 
-var AUTH = require('./auth');
-var CHAT = require('./chat');
-
 //functions for general file interaction
 
 var getJsonFromTextfile = function (filename)

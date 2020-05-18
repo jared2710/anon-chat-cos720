@@ -1,6 +1,5 @@
 var crypto = require("crypto");
 
-var FILE = require('./file');
 var CHAT = require('./chat');
 
 //functions for validation and authorization

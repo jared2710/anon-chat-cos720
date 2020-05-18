@@ -3,7 +3,6 @@ var app = express();
 var port = process.env.PORT || 4000;
 
 var AUTH = require('./auth');
-var FILE = require('./file');
 var CHAT = require('./chat');
 
 
@@ -75,7 +74,7 @@ function sendMessage(auth, json, res)
 	if(AUTH.isValidChatroom(chatroom))
 	{
 		var message = json.message;
-		var result = CHAT.addMessageToChatroom(auth, chatroom, message, FILE);
+		var result = CHAT.addMessageToChatroom(auth, chatroom, message);
 		respond(res, "Message sent: " + result);
 	}
 	else
@@ -93,7 +92,7 @@ function getAllMessages(auth, json, res)
 	var chatroom = json.chatroom;
 	if(AUTH.isValidChatroom(chatroom))
 	{
-		var result = CHAT.getChatroomMessages(chatroom, FILE);
+		var result = CHAT.getChatroomMessages(chatroom);
 		result = AUTH.stripRealAuth(result);
 		respond(res, result);
 	}

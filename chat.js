@@ -1,6 +1,5 @@
 var glob = require("glob");
 
-var AUTH = require('./auth');
 var FILE = require('./file');
 
 //functions for chatroom file interaction
