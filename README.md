@@ -33,11 +33,103 @@ node server
 ```
 
 ## Usage
-This is an HTTP API server, so once we install and run it as above, we can interfact with it using HTTP requests. Specifically, only POST requests can be used, any other requests (like GET) will fail. All POST requests should be directed at the endpoint /, e.g. myserver.com/ or 123.456.789.123/. JSON should be sent in the body of the POST request, so the content type heading should be application/json. The possible request types are specified below:
+This is an HTTP API server, so once we install and run it as above, we can interfact with it using HTTP requests. Specifically, only POST requests can be used, any other requests (like GET) will fail. All POST requests should be directed at the endpoint /, like myserver.com/ or 123.456.789.123/. JSON should be sent in the body of the POST request, so the content type heading should be application/json. The possible request types are specified below:
 
-Type | Required fields | Example JSON  | Response |
---- | --- | --- | --- |
-getAllChatroomNames | auth | {"type" : "getAllChatroomNames", "auth" : "12345...67890"} | ["room1, "room2", "room3] |
+### getAllChatroomNames 
+Required fields:
+- **auth**: random string of length 50, consisting of uppercase, lowercase, numbers
+
+Example JSON body:
+````json
+{
+    "type" : "getAllChatroomNames",
+    "auth" : "12345...67890"
+}
+````
+
+Example JSON response:
+````json
+{
+    "status": 1,
+    "data": 
+    [
+        "room1",
+        "room2",
+        "room3"
+    ]
+}
+````
+
+### getAllMessages 
+Required fields:
+- **auth**: random string of length 50, consisting of uppercase, lowercase, numbers
+- **chatroom**: name of the chatroom to send a message to, a list of possible chatrooms can be found using getAllChatroomNames
+
+Example JSON body:
+````json
+{
+    "type" : "getAllMessages",
+    "auth" : "12345...67890",
+    "chatroom" : "room1"
+}
+````
+
+Example JSON response:
+````json
+{
+    "status": 1,
+    "data": 
+    {
+        "messages": 
+        [
+            {
+                "user":"abdkgslwoi",
+                "time": "2020-05-18 16:01:34",
+                "message": "hi"
+            },
+            {
+                "user":"fjodjudhas",
+                "time": "2020-05-18 16:01:51",
+                "message": "hey there bro"
+            }
+        ]
+    }
+}
+````
+
+### sendMessage
+Required fields:
+- **auth**: random string of length 50, consisting of uppercase, lowercase, numbers
+- **chatroom**: name of the chatroom to send a message to, a list of possible chatrooms can be found using getAllChatroomNames
+- **message**: the message to be sent to the chatroom, no real constraints imposed on this message
+
+Example JSON body:
+````json
+{
+    "type" : "sendMessage",
+    "auth" : "12345...67890",
+    "chatroom" : "room1",
+    "message" : "welcome to my crib"
+}
+````
+
+Example JSON response:
+````json
+{
+    "status": 1,
+    "data": "Message sent: true"
+}
+````
+
+### Errors from API
+Errors returned from the API are detectable from the status field of the JSON response, with 0 meaning an error occurred, and 1 meaning the request was accepted and executed without error. For example, an error from the API would look like this:
+````json
+{
+    "status": 0,
+    "data": "Error message will be here"
+}
+````
+
 
 
 ## Contribution
