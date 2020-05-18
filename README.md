@@ -1,5 +1,5 @@
 # anon-chat-cos720
-The server-side NodeJS server for an anonymous chatroom, which forms part of a COS720 project at the University of Pretoria in South Africa. See [anon-chat-local-cos720](https://github.com/jared2710/anon-chat-local-cos720) for the client-side command-line application which accesses this server.
+The server-side NodeJS API for an anonymous chatroom, which forms part of a COS720 project at the University of Pretoria in South Africa. See [anon-chat-local-cos720](https://github.com/jared2710/anon-chat-local-cos720) for the client-side command-line application which accesses this server.
 
 ## Environment
 This code was designed for and runs on [Heroku](https://heroku.com), a Cloud Application Platform. Specifically, a free app was created, called 'anon-chat-cos720', and this was linked to this GitHub repository, with automatic deploys from master enabled. Heroku simply uses the npm start script located in package.json to run the server.
