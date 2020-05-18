@@ -93,7 +93,7 @@ function getAllMessages(auth, json, res)
 	var chatroom = json.chatroom;
 	if(AUTH.isValidChatroom(chatroom))
 	{
-		var result = CHAT.getChatroomMessages(chatroom);
+		var result = CHAT.getChatroomMessages(chatroom, FILE);
 		result = AUTH.stripRealAuth(result);
 		respond(res, result);
 	}

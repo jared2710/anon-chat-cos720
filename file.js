@@ -1,7 +1,6 @@
 var fs = require("fs");
 
 var AUTH = require('./auth');
-var FILE = require('./file');
 var CHAT = require('./chat');
 
 //functions for general file interaction

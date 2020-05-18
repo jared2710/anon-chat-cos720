@@ -1,6 +1,5 @@
 var crypto = require("crypto");
 
-var AUTH = require('./auth');
 var FILE = require('./file');
 var CHAT = require('./chat');
 

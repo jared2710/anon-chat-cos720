@@ -2,7 +2,6 @@ var glob = require("glob");
 
 var AUTH = require('./auth');
 var FILE = require('./file');
-var CHAT = require('./chat');
 
 //functions for chatroom file interaction
 
@@ -25,7 +24,7 @@ var currentDate = function ()
     	return d;
 }
 
-var getChatroomMessages = function (chatroom)
+var getChatroomMessages = function (chatroom, FILE)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
 	console.log("chatroomFilename: " + chatroomFilename);
