@@ -26,20 +26,20 @@ var currentDate = function ()
 var getChatroomMessages = function (chatroom)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
-	console.log("chatroomFilename: " + chatroomFilename);
+	//console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
-	console.log(chatroomData);
+	//console.log(chatroomData);
 	return chatroomData.messages;
 }
 
 var addMessageToChatroom = function (auth, chatroom, message)
 {
 	var chatroomFilename = chatroomNameToChatroomFilename(chatroom);
-	console.log("chatroomFilename: " + chatroomFilename);
+	//console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
-	console.log(chatroomData);
+	//console.log(chatroomData);
 	chatroomData.messages.push({"time":currentDate(), "user":auth, "message":message});
-	console.log(chatroomData);
+	//console.log(chatroomData);
 	FILE.writeJsonToTextfile(chatroomData, chatroomFilename);
 	return true;
 }
@@ -47,7 +47,7 @@ var addMessageToChatroom = function (auth, chatroom, message)
 var getAllChatroomFilenames = function ()
 {
 	var filenames = glob.sync("chatroom_*.json");
-	console.log(filenames);
+	//console.log(filenames);
 	return filenames;
 }
 
@@ -58,7 +58,7 @@ var chatroomFilenamesToChatroomNames = function (filenames)
 	{
 		names.push(chatroomFilenameToChatroomName(filenames[i]));
 	}
-	console.log(names);
+	//console.log(names);
 	return names;
 }
 

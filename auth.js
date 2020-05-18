@@ -35,13 +35,13 @@ var sha256 = function (text)
 var authStringToUsername = function (auth)
 {
 	var hash = sha256(auth);
-	console.log(hash);
+	//console.log(hash);
 	hash = hash.substring(0, 10);
-	console.log(hash);
+	//console.log(hash);
 	var username = "";
 	for(var i = 0; i < hash.length; i++)
 	{
-		console.log(hash[i]);
+		//console.log(hash[i]);
 		var toAdd = "";
 		switch(hash[i])
 		{

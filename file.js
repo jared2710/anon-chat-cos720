@@ -5,17 +5,17 @@ var fs = require("fs");
 var getJsonFromTextfile = function (filename)
 {
 	var rawdata = fs.readFileSync(filename);
-	console.log("File contents: " + rawdata.toString());
+	//console.log("File contents: " + rawdata.toString());
 	var jsonOfFile = JSON.parse(rawdata);
-	console.log(jsonOfFile);
+	//console.log(jsonOfFile);
 	return jsonOfFile;
 }
 
 var writeJsonToTextfile = function (json, filename)
 {
-	console.log(json);
+	//console.log(json);
 	var toWrite = JSON.stringify(json);
-	console.log("To write: " + toWrite);
+	//console.log("To write: " + toWrite);
 	fs.writeFileSync(filename, toWrite);
 }
 
