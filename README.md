@@ -37,7 +37,7 @@ This is an HTTP API server, so once we install and run it as above, we can inter
 
 Type | Required fields | Example JSON  | Response |
 --- | --- | --- | --- |
-getAllChatroomNames | auth | {"type" : "getAllChatroomNames", "auth" : "123456789012345678901234567890123456789012345678901234567890"} | ["room1, "room2", "room3] |
+getAllChatroomNames | auth | {"type" : "getAllChatroomNames", "auth" : "12345...67890"} | ["room1, "room2", "room3] |
 
 
 ## Contribution
