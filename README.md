@@ -17,6 +17,12 @@ sudo apt update
 sudo apt install nodejs npm # both installed in one command
 ```
 
+If you are setting up on a server you have full control over (not like Heroku), you will need to open up ports on your firewall to allow traffic into and out of this application. On Ubuntu, which uses ufw, you could open these ports up like this:
+
+```bash
+sudo ufw allow 4000 # open port 4000, the default port for this server
+```
+
 Then, we can clone the application from this git repository, navigate into the cloned folder, install all dependencies and then run the application:
 
 ```bash
