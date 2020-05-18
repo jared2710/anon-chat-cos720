@@ -169,6 +169,8 @@ function authStringToUsername(auth)
 			case "f":
 				toAdd = "p";
 				break;
+			default:
+				toAdd = "";
 			
 		}
 		username += toAdd;
