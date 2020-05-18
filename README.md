@@ -14,13 +14,13 @@ Firstly, we need to install [NodeJS](https://nodejs.org/) and [npm](https://www.
 
 ```bash
 sudo apt update
-sudo apt install nodejs npm # both installed in one command
+sudo apt install nodejs npm     # both installed in one command
 ```
 
-If you are setting up on a server you have full control over (not like Heroku), you will need to open up ports on your firewall to allow traffic into and out of this application. On Ubuntu, which uses ufw, you could open these ports up like this:
+If you are setting up on a server you have full control over (not like Heroku), you will need to open up ports on your firewall to allow traffic into and out of this application. On Ubuntu, which uses [ufw](https://help.ubuntu.com/community/UFW), you could open these ports up like this:
 
 ```bash
-sudo ufw allow 4000 # open port 4000, the default port for this server
+sudo ufw allow 4000             # open port 4000, the default port for this server
 ```
 
 Then, we can clone the application from this git repository, navigate into the cloned folder, install all dependencies and then run the application:
@@ -134,6 +134,27 @@ Errors returned from the API are detectable from the status field of the JSON re
     "data": "Error message will be here"
 }
 ````
+
+## Uninstallation
+
+You can uninstall NodeJS and npm using the following commands in Ubuntu:
+
+```bash
+sudo apt remove nodejs npm      # remove nodejs and npm but keep configuration files
+sudo apt purge nodejs npm       # completely remove nodejs and npm and all configuration files
+```
+
+If you opened up a port on your firewall using ufw, e.g. port 4000, you can close that port with the following command:
+
+```bash
+sudo ufw delete allow 4000      # open port 4000, the default port for this server
+```
+
+Finally, navigate to the directory that contains the cloned anon-chat-local-cos720 directory, and run the following command to delete the anon-chat-local-cos720 directory:
+
+```bash
+rm -rf anon-chat-cos720         # delete the directory cloned to this machine
+```
 
 
 
