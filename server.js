@@ -125,46 +125,46 @@ function authStringToUsername(auth)
 				toAdd = "a";
 				break;
 			case "1":
-				toAdd = "b";
+				toAdd = "a";
 				break;
 			case "2":
-				toAdd = "c";
-				break;
-			case "3":
-				toAdd = "d";
-				break;
-			case "4":
 				toAdd = "e";
 				break;
-			case "5":
-				toAdd = "f";
+			case "3":
+				toAdd = "e";
 				break;
-			case "6":
-				toAdd = "g";
-				break;
-			case "7":
-				toAdd = "h";
-				break;
-			case "8":
+			case "4":
 				toAdd = "i";
 				break;
+			case "5":
+				toAdd = "i";
+				break;
+			case "6":
+				toAdd = "o";
+				break;
+			case "7":
+				toAdd = "o";
+				break;
+			case "8":
+				toAdd = "u";
+				break;
 			case "9":
-				toAdd = "j";
+				toAdd = "u";
 				break;
 			case "a":
-				toAdd = "k";
+				toAdd = "r";
 				break;
 			case "b":
-				toAdd = "l";
+				toAdd = "d";
 				break;
 			case "c":
-				toAdd = "m";
+				toAdd = "l";
 				break;
 			case "d":
-				toAdd = "n";
+				toAdd = "m";
 				break;
 			case "e":
-				toAdd = "o";
+				toAdd = "s";
 				break;
 			case "f":
 				toAdd = "p";
