@@ -11,20 +11,23 @@ This API server is a NodeJS project, which is interacted with using HTTP request
 ## Installation
 
 Firstly, we need to install [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) in order to run the application:
-
 ```bash
 sudo apt update
 sudo apt install nodejs npm     # both installed in one command
 ```
 
-If you are setting up on a server you have full control over (not like Heroku), you will need to open up ports on your firewall to allow traffic into and out of this application. On Ubuntu, which uses [ufw](https://help.ubuntu.com/community/UFW), you could open these ports up like this:
+If you do not have git installed already on your Ubuntu machine, you can install it with:
+```bash
+sudo apt update
+sudo apt install git          # only pro coders install this bad boy
+```
 
+If you are setting up on a server you have full control over (not like Heroku), you will need to open up ports on your firewall to allow traffic into and out of this application. On Ubuntu, which uses [ufw](https://help.ubuntu.com/community/UFW), you could open these ports up like this:
 ```bash
 sudo ufw allow 4000             # open port 4000, the default port for this server
 ```
 
 Then, we can clone the application from this git repository, navigate into the cloned folder, install all dependencies and then run the application:
-
 ```bash
 git clone https://github.com/jared2710/anon-chat-cos720.git
 cd anon-chat-cos720
@@ -138,20 +141,30 @@ Errors returned from the API are detectable from the status field of the JSON re
 ## Uninstallation
 
 You can uninstall NodeJS and npm using the following commands in Ubuntu:
-
 ```bash
 sudo apt remove nodejs npm      # remove nodejs and npm but keep configuration files
+-- OR --
 sudo apt purge nodejs npm       # completely remove nodejs and npm and all configuration files
 ```
 
-If you opened up a port on your firewall using ufw, e.g. port 4000, you can close that port with the following command:
+You will probably want to keep git installed, but in case you don't, you can uninstall it like this:
+```bash
+sudo apt remove git           # remove git but keep configuration files
+-- OR --
+sudo apt purge git            # completely remove git and all configuration files
+```
 
+A bunch of packages will not be explicity uninstalled from this removal/purging, and they may not be needed by any other packages you have installed. You can automatically remove them using apt's autoremove command, like so:
+```bash
+sudo apt autoremove           # remove any of the leftover packages
+```
+
+If you opened up a port on your firewall using ufw, e.g. port 4000, you can close that port with the following command:
 ```bash
 sudo ufw delete allow 4000      # open port 4000, the default port for this server
 ```
 
 Finally, navigate to the directory that contains the cloned anon-chat-cos720 directory, and run the following command to delete the anon-chat-cos720 directory:
-
 ```bash
 rm -rf anon-chat-cos720         # delete the directory cloned to this machine
 ```
