@@ -19,14 +19,11 @@ app.post("/", (req, res) =>
 	var json = req.body;
 	var auth = json.auth;
 
-	console.log("auth: " + auth);
 	console.log("json: " + JSON.stringify(json));
 
 	if(AUTH.isValidAuth(auth))
 	{
 		var type = json.type;
-
-		
 		
 		switch(type)
 		{
