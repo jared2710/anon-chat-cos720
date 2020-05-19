@@ -31,7 +31,7 @@ Then, we can clone the application from this git repository, navigate into the c
 ```bash
 git clone https://github.com/jared2710/anon-chat-cos720.git
 cd anon-chat-cos720
-npm install .
+npm install .                   # crypto, express, fs and glob are installed
 node server
 ```
 
@@ -178,4 +178,4 @@ rm -rf anon-chat-cos720         # delete the directory cloned to this machine
 
 
 ## Contribution
-This server was created by Jared O'Reilly, a Computer Science Honours student at the University of Pretoria. Besides the npm packages, everything was designed, coded and tested by him. 
+This server was created by Jared O'Reilly, a Computer Science Honours student at the University of Pretoria. Besides the npm packages, everything was designed, coded and tested by him. Thanks must go to the [random-name](https://github.com/dominictarr/random-name) project, for providing a list of 21986 names in JSON format which were used in pseudonym creation.
