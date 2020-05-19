@@ -44,6 +44,8 @@ This is an HTTP API server, so once we install and run it as above, we can inter
 The possible request types are specified below:
 
 ### getAllChatroomNames 
+This request is used to retrieve all possible chatrooms which can be joined on this server. 
+
 Required fields:
 - **auth**: random string of length 50, consisting of uppercase, lowercase, numbers
 
@@ -58,8 +60,8 @@ Example JSON body:
 Example JSON response:
 ````json
 {
-    "status": 1,
-    "data": 
+    "status" : 1,
+    "data" : 
     [
         "room1",
         "room2",
@@ -69,6 +71,8 @@ Example JSON response:
 ````
 
 ### getAllMessages 
+This request is used to retrieve all messages sent to a chatroom, including the author of the message, the time it was received and the content of the message.
+
 Required fields:
 - **auth**: random string of length 50, consisting of uppercase, lowercase, numbers
 - **chatroom**: name of the chatroom to send a message to, a list of possible chatrooms can be found using getAllChatroomNames
@@ -85,20 +89,20 @@ Example JSON body:
 Example JSON response:
 ````json
 {
-    "status": 1,
-    "data": 
+    "status" : 1,
+    "data" : 
     {
-        "messages": 
+        "messages" : 
         [
             {
-                "user":"abdkgslwoi",
-                "time": "2020-05-18 16:01:34",
-                "message": "hi"
+                "user" : "Angel Dorami Grazili",
+                "time" : "2020-05-18 16:01:34",
+                "message" : "hi"
             },
             {
-                "user":"fjodjudhas",
-                "time": "2020-05-18 16:01:51",
-                "message": "hey there bro"
+                "user" : "Clive Edward Hokku",
+                "time" : "2020-05-18 16:01:51",
+                "message" : "hey there bro"
             }
         ]
     }
@@ -106,6 +110,8 @@ Example JSON response:
 ````
 
 ### sendMessage
+This request is used to send a message to a chatroom. The auth field is converted into a 3-word pseudonym, which is assigned as the author of the message. This conversion is one-way i.e. we cannot figure out the auth value that produced a certain pseudonym, and therefore only the holder of that (long and random) auth value can identify as that pseudonym when sending a message.
+
 Required fields:
 - **auth**: random string of length 50, consisting of uppercase, lowercase, numbers
 - **chatroom**: name of the chatroom to send a message to, a list of possible chatrooms can be found using getAllChatroomNames
@@ -124,8 +130,8 @@ Example JSON body:
 Example JSON response:
 ````json
 {
-    "status": 1,
-    "data": "Message sent: true"
+    "status" : 1,
+    "data" : "Message sent: true"
 }
 ````
 
@@ -133,8 +139,8 @@ Example JSON response:
 Errors returned from the API are detectable from the status field of the JSON response, with 0 meaning an error occurred, and 1 meaning the request was accepted and executed without error. For example, an error from the API would look like this:
 ````json
 {
-    "status": 0,
-    "data": "Error message will be here"
+    "status" : 0,
+    "data" : "Error message will be here"
 }
 ````
 
