@@ -32,30 +32,29 @@ var sha256 = function (text)
 
 var authStringToUsername = function (auth, names)
 {
-	console.log(auth);
+	//console.log(auth);
 	var hash = sha256(auth);
-	console.log(hash);
+	//console.log(hash);
 	hash = hash.substring(0, 9);
-	console.log(hash);
+	//console.log(hash);
 	var username = "";
 	for(var i = 0; i < 9; i = i + 3)
 	{
 		//console.log(hash[i]);
 		var hex = hash[i] + hash[i+1] + hash[i+2];
-		console.log(hex);
+		//console.log(hex);
 
 		var pos = parseInt(Number("0x" + hex), 10);
-		console.log(pos);
+		//console.log(pos);
 
 		pos += (i/3)*16*16*16;
-		console.log(pos);
-
+		//console.log(pos);
 
 		var toAdd = names[pos];
-		console.log(toAdd);
+		//console.log(toAdd);
 		
 		username += toAdd + " ";
-		console.log(username);
+		//console.log(username);
 	}
 	return username.substring(0, username.length-1);
 }

@@ -25,21 +25,12 @@ var isValidChatroom = function (chatroom)
 	}
 	return false;
 }
-/*var stripRealAuth = function (messages)
-{
-	for(var i = 0; i < messages.length; i++)
-	{
-		messages[i].user = authStringToUsername(messages[i].user);
-	}
-	return messages;
-}*/
+
 
 module.exports =
 {
 	isValidAuth: isValidAuth,
 
-	isValidChatroom: isValidChatroom//,
-
-	//stripRealAuth: stripRealAuth
+	isValidChatroom: isValidChatroom
 }
 
