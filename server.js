@@ -18,9 +18,15 @@ app.post("/", (req, res) =>
 {
 	var json = req.body;
 	var auth = json.auth;
+
+	console.log("auth: " + auth);
+	console.log("json: " + jJSON.stringify(json));
+
 	if(AUTH.isValidAuth(auth))
 	{
 		var type = json.type;
+
+		
 		
 		switch(type)
 		{
@@ -66,10 +72,6 @@ function error(res, message)
 //request type methods
 function sendMessage(auth, json, res)
 {
-	console.log("Send message");
-	console.log("auth: " + auth);
-	console.log("json: " + json);
-
 	var chatroom = json.chatroom;
 	if(AUTH.isValidChatroom(chatroom))
 	{
@@ -86,10 +88,6 @@ function sendMessage(auth, json, res)
 
 function getAllMessages(auth, json, res)
 {
-	console.log("Get all messages");
-	console.log("auth: " + auth);
-	console.log("json: " + json);
-
 	var chatroom = json.chatroom;
 	if(AUTH.isValidChatroom(chatroom))
 	{
@@ -104,10 +102,6 @@ function getAllMessages(auth, json, res)
 
 function getAllChatroomNames(auth, json, res)
 {
-	console.log("Get all chatrooms");
-	console.log("auth: " + auth);
-	console.log("json: " + json);
-
 	var filenames = CHAT.getAllChatroomFilenames();
 	var names = CHAT.chatroomFilenamesToChatroomNames(filenames);
 
