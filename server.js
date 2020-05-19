@@ -20,7 +20,7 @@ app.post("/", (req, res) =>
 	var auth = json.auth;
 
 	console.log("auth: " + auth);
-	console.log("json: " + jJSON.stringify(json));
+	console.log("json: " + JSON.stringify(json));
 
 	if(AUTH.isValidAuth(auth))
 	{
