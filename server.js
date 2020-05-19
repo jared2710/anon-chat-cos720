@@ -74,6 +74,7 @@ function sendMessage(auth, json, res)
 	if(AUTH.isValidChatroom(chatroom))
 	{
 		var message = json.message;
+
 		var result = CHAT.addMessageToChatroom(auth, chatroom, message);
 		respond(res, "Message sent: " + result);
 	}

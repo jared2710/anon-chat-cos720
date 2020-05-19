@@ -32,84 +32,50 @@ var sha256 = function (text)
 	return crypto.createHash('sha256').update(text).digest('hex');
 }
 
-var authStringToUsername = function (auth)
+var authStringToUsername = function (auth, names)
 {
+	console.log(auth);
 	var hash = sha256(auth);
-	//console.log(hash);
-	hash = hash.substring(0, 10);
-	//console.log(hash);
+	console.log(hash);
+	hash = hash.substring(0, 9);
+	console.log(hash);
 	var username = "";
-	for(var i = 0; i < hash.length; i++)
+	for(var i = 0; i < 9; i = i + 3)
 	{
 		//console.log(hash[i]);
-		var toAdd = "";
-		switch(hash[i])
-		{
-			case "0":
-				toAdd = "a";
-				break;
-			case "1":
-				toAdd = "a";
-				break;
-			case "2":
-				toAdd = "e";
-				break;
-			case "3":
-				toAdd = "e";
-				break;
-			case "4":
-				toAdd = "i";
-				break;
-			case "5":
-				toAdd = "i";
-				break;
-			case "6":
-				toAdd = "o";
-				break;
-			case "7":
-				toAdd = "o";
-				break;
-			case "8":
-				toAdd = "u";
-				break;
-			case "9":
-				toAdd = "u";
-				break;
-			case "a":
-				toAdd = "r";
-				break;
-			case "b":
-				toAdd = "d";
-				break;
-			case "c":
-				toAdd = "l";
-				break;
-			case "d":
-				toAdd = "m";
-				break;
-			case "e":
-				toAdd = "s";
-				break;
-			case "f":
-				toAdd = "p";
-				break;
-			default:
-				toAdd = "";
-			
-		}
-		username += toAdd;
+		var char1 = hash[i];
+		var char2 = hash[i+1];
+		var char3 = hash[i+2];
+		console.log(char1 + "|" + char2 + "|" + char3);
+
+		char1 = parseInt(Number("0x" + char1), 10);
+		char2 = parseInt(Number("0x" + char2), 10);
+		char3 = parseInt(Number("0x" + char3), 10);
+		console.log(char1 + "|" + char2 + "|" + char3);
+
+		var pos = char1*16*16 + char2*16 + char3;
+		console.log(pos);
+		pos += i*16*16*16;
+		console.log(pos);
+
+
+		var toAdd = names[pos];
+		console.log(toAdd);
+		
+		username += toAdd + " ";
+		console.log(username.substring(0, -1));
 	}
-	return username;
+	return username.substring(0, -1);
 }
 
-var stripRealAuth = function (messages)
+/*var stripRealAuth = function (messages)
 {
 	for(var i = 0; i < messages.length; i++)
 	{
 		messages[i].user = authStringToUsername(messages[i].user);
 	}
 	return messages;
-}
+}*/
 
 module.exports =
 {
@@ -119,8 +85,8 @@ module.exports =
 
 	sha256: sha256,
 
-	authStringToUsername: authStringToUsername,
+	authStringToUsername: authStringToUsername//,
 
-	stripRealAuth: stripRealAuth
+	//stripRealAuth: stripRealAuth
 }
 

@@ -1,5 +1,6 @@
 var glob = require("glob");
 
+var AUTH = require('./auth');
 var FILE = require('./file');
 
 //functions for chatroom file interaction
@@ -38,6 +39,10 @@ var addMessageToChatroom = function (auth, chatroom, message)
 	//console.log("chatroomFilename: " + chatroomFilename);
 	var chatroomData = FILE.getJsonFromTextfile(chatroomFilename);
 	//console.log(chatroomData);
+
+	var names = FILE.getJsonFromTextfile("names.json");
+	auth = AUTH.authStringToUsername(auth);
+
 	chatroomData.messages.push({"time":currentDate(), "user":auth, "message":message});
 	//console.log(chatroomData);
 	FILE.writeJsonToTextfile(chatroomData, chatroomFilename);
