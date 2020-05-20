@@ -6,7 +6,7 @@ class ChatroomFile
 	{
 		this.chatroomName = chatroomName;
 		this.chatroomFilename = "chatroom_" + chatroomName + ".json";
-		this.textfile = new TextFile(chatroomFilename);
+		this.textfile = new TextFile(this.chatroomFilename);
 	}
 
 	print()
