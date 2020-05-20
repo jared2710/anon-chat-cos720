@@ -24,7 +24,7 @@ class ChatroomFileInterface
 	
 	getMessages()
 	{
-		return chatroomfile.getMessages();
+		return this.chatroomfile.getMessages();
 	}
 	
 	addMessage(pseudonym, message)
