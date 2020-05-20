@@ -17,7 +17,9 @@ class ChatroomFile
 	getMessages()
 	{
 		var fileContents = this.textfile.getContents();
+		console.log(fileContents);
 		var messages = JSON.parse(fileContents);
+		console.log(messages);
 		return messages;
 	}
 	
