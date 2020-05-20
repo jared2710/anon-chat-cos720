@@ -30,7 +30,7 @@ class ChatroomFileInterface
 	addMessage(pseudonym, message)
 	{
 		var messages = this.chatroomfile.getMessages();
-		console.print(messages);
+		console.log(messages);
 
 		messages.push({"time":this.currentDate(), "user":pseudonym, "message":message});
 		
