@@ -80,7 +80,6 @@ class Handler
 		if(this.authenticator.isValidChatroom(chatroomName))
 		{
 			var result = this.chatroommanager.getChatroomMessages(chatroomName);
-			console.log(result);
 			this.respond(res, result);
 		}
 		else

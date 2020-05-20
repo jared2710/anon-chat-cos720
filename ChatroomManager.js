@@ -44,9 +44,7 @@ class ChatroomManager
 	{
 		var chatroom = new Chatroom(chatroomName);
 		var messages = chatroom.getChatroomMessages();
-		console.log(messages);
 		var result = messages.messages;
-		console.log(messages);
 		return result;
 	}
 	

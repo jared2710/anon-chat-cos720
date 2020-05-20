@@ -17,17 +17,17 @@ class ChatroomFile
 	getMessages()
 	{
 		var fileContents = this.textfile.getContents();
-		console.log(fileContents);
+		//console.log(fileContents);
 		var messages = JSON.parse(fileContents);
-		console.log(messages);
+		//console.log(messages);
 		return messages;
 	}
 	
 	writeMessages(messages)
 	{
-		console.log(messages);
+		//console.log(messages);
 		var toWrite = JSON.stringify(messages);
-		console.log(toWrite);
+		//console.log(toWrite);
 		this.textfile.writeContents(toWrite);
 	}
 }
