@@ -75,7 +75,6 @@ class Handler
 	getAllMessagesType(auth, json, res)
 	{
 		var chatroomName = json.chatroom;
-		console.log(chatroomName);
 		
 		if(this.authenticator.isValidChatroom(chatroomName))
 		{
