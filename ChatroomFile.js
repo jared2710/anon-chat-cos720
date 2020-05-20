@@ -23,7 +23,9 @@ class ChatroomFile
 	
 	writeMessages(messages)
 	{
+		console.log(messages);
 		var toWrite = JSON.stringify(messages);
+		console.log(toWrite);
 		this.textfile.writeContents(toWrite);
 	}
 }

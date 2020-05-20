@@ -19,6 +19,8 @@ class TextFile
 	
 	writeContents(toWrite)
 	{
+		console.log(this.filename);
+		console.log(toWrite);
 		fs.writeFileSync(this.filename, toWrite);
 	}
 }
