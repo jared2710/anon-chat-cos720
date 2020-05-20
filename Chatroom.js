@@ -51,7 +51,7 @@ class Chatroom
 	addMessageToChatroom(auth, message)
 	{
 		var pseudonym = this.authStringToPseudonym(auth);
-		this.chatroomfileinterface.addMessage(pseudonym, auth);
+		this.chatroomfileinterface.addMessage(pseudonym, message);
 	}
 }
 

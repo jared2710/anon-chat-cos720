@@ -43,13 +43,18 @@ class ChatroomManager
 	getChatroomMessages(chatroomName)
 	{
 		var chatroom = new Chatroom(chatroomName);
-		return chatroom.getChatroomMessages();
+		var messages = chatroom.getChatroomMessages();
+		console.log(messages);
+		var result = messages.messages;
+		console.log(messages);
+		return result;
 	}
 	
 	addMessageToChatroom(chatroomName, auth, message)
 	{
 		var chatroom = new Chatroom(chatroomName);
 		chatroom.addMessageToChatroom(auth, message);
+		return true;
 	}
 }
 
