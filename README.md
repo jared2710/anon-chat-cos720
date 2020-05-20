@@ -91,21 +91,18 @@ Example JSON response:
 {
     "status" : 1,
     "data" : 
-    {
-        "messages" : 
-        [
-            {
-                "user" : "Angel Dorami Grazili",
-                "time" : "2020-05-18 16:01:34",
-                "message" : "hi"
-            },
-            {
-                "user" : "Clive Edward Hokku",
-                "time" : "2020-05-18 16:01:51",
-                "message" : "hey there bro"
-            }
-        ]
-    }
+    [
+        {
+            "user" : "Angel Dorami Grazili",
+            "time" : "2020-05-18 16:01:34",
+            "message" : "hi"
+        },
+        {
+            "user" : "Clive Edward Hokku",
+            "time" : "2020-05-18 16:01:51",
+            "message" : "hey there bro"
+        }
+    ]
 }
 ````
 
