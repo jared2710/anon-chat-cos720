@@ -45,13 +45,13 @@ class Chatroom
 	
 	getChatroomMessages()
 	{
-		return chatroomfileinterface.getMessages();
+		return this.chatroomfileinterface.getMessages();
 	}
 	
 	addMessageToChatroom(auth, message)
 	{
 		var pseudonym = this.authStringToPseudonym(auth);
-		chatroomfileinterface.addMessage(pseudonym, auth);
+		this.chatroomfileinterface.addMessage(pseudonym, auth);
 	}
 }
 
