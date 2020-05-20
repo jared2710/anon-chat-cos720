@@ -1,3 +1,4 @@
+var crypto = require("crypto");
 var ChatroomFileInterface = require("./ChatroomFileInterface");
 
 class Chatroom

@@ -1,3 +1,4 @@
+var glob = require("glob");
 var Chatroom = require("./Chatroom");
 
 class ChatroomManager
