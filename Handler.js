@@ -81,6 +81,8 @@ class Handler
 		{
 			var result = this.chatroommanager.getChatroomMessages(chatroomName);
 			console.log(result);
+			result = result.messages;
+			console.log(result);
 			this.respond(res, result);
 		}
 		else
