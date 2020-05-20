@@ -1,114 +1,26 @@
 var express = require("express");
 var app = express();
+app.use(express.json());
 var port = process.env.PORT || 4000;
 
-var AUTH = require('./auth');
-var CHAT = require('./chat');
 
 
-//app boiler plate code
-app.use(express.json());
+var Handler = require('./Handler');
+handler = new Handler();
+
+
 
 app.get("/", (req, res) =>
 {	
-	res.json({"status" : 0, "data" : "GET requests are not permitted"});
+	handler.error(res, "GET requests are not permitted");
 });
 
 app.post("/", (req, res) =>
 {
-	var json = req.body;
-	var auth = json.auth;
-
-	console.log("json: " + JSON.stringify(json));
-
-	if(AUTH.isValidAuth(auth))
-	{
-		var type = json.type;
-		
-		switch(type)
-		{
-			case "sendMessage":
-				sendMessage(auth, json, res);
-				break;
-			case "getAllMessages":
-				getAllMessages(auth, json, res);
-				break;
-			case "getAllChatroomNames":
-				getAllChatroomNames(auth, json, res);
-				break;
-			default:
-				error(res, "Invalid type for API");
-		}
-	}
-	else
-	{
-		error(res, "Authorization failed");
-	}
-	
+	handler.handle(req, res);
 });
 
 app.listen(port, () =>
 {
 	console.log("Server running on port " + port);
 });
-
-
-//helper functions
-function respond(res, data)
-{
-	res.json({"status" : 1, "data" : data});
-}
-
-function error(res, message)
-{
-	res.json({"status" : 0, "data" : message});
-}
-
-
-
-//request type methods
-function sendMessage(auth, json, res)
-{
-	var chatroom = json.chatroom;
-	if(AUTH.isValidChatroom(chatroom))
-	{
-		var message = json.message;
-
-		var result = CHAT.addMessageToChatroom(auth, chatroom, message);
-		respond(res, "Message sent: " + result);
-	}
-	else
-	{
-		error(res, "Invalid chatroom");
-	}
-}
-
-function getAllMessages(auth, json, res)
-{
-	var chatroom = json.chatroom;
-	if(AUTH.isValidChatroom(chatroom))
-	{
-		var result = CHAT.getChatroomMessages(chatroom);
-		respond(res, result);
-	}
-	else
-	{
-		error(res, "Invalid chatroom");
-	}
-}
-
-function getAllChatroomNames(auth, json, res)
-{
-	var filenames = CHAT.getAllChatroomFilenames();
-	var names = CHAT.chatroomFilenamesToChatroomNames(filenames);
-
-	respond(res, names);
-}
-
-
-
-
-
-
-
-
