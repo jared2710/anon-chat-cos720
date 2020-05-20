@@ -30,8 +30,10 @@ class ChatroomFileInterface
 	addMessage(pseudonym, message)
 	{
 		var json = this.chatroomfile.getMessages();
+		console.log(json);
 
 		json.messages.push({"time":this.currentDate(), "user":pseudonym, "message":message});
+		console.log(json);
 		
 		this.chatroomfile.writeMessages(json);
 	}
