@@ -16,7 +16,10 @@ class Handler
 	
 	handle(req, res)
 	{
-		var json = req.body;
+		this.req = req;
+		this.res = res;
+		
+		var json = this.req.body;
 		var auth = json.auth;
 
 		console.log("json: " + JSON.stringify(json));
@@ -28,35 +31,35 @@ class Handler
 			switch(type)
 			{
 				case "sendMessage":
-					this.sendMessageType(auth, json, res);
+					this.sendMessageType(auth, json);
 					break;
 				case "getAllMessages":
-					this.getAllMessagesType(auth, json, res);
+					this.getAllMessagesType(auth, json);
 					break;
 				case "getAllChatroomNames":
-					this.getAllChatroomNamesType(auth, json, res);
+					this.getAllChatroomNamesType(auth, json);
 					break;
 				default:
-					this.error(res, "Invalid type for API");
+					this.error("Invalid type for API");
 			}
 		}
 		else
 		{
-			this.error(res, "Authorization failed");
+			this.error("Authorization failed");
 		}
 	}
 
-	respond(res, data)
+	respond(data)
 	{
-		res.json({"status" : 1, "data" : data});
+		this.res.json({"status" : 1, "data" : data});
 	}
 
-	error(res, message)
+	error(message)
 	{
-		res.json({"status" : 0, "data" : message});
+		this.res.json({"status" : 0, "data" : message});
 	}
 	
-	sendMessageType(auth, json, res)
+	sendMessageType(auth, json)
 	{
 		var chatroomName = json.chatroom;
 		var message = json.message;
@@ -64,33 +67,33 @@ class Handler
 		if(this.authenticator.isValidChatroom(chatroomName))
 		{
 			var result = this.chatroommanager.addMessageToChatroom(chatroomName, auth, message);
-			this.respond(res, "Message sent: " + result);
+			this.respond("Message sent: " + result);
 		}
 		else
 		{
-			this.error(res, "Invalid chatroom");
+			this.error("Invalid chatroom");
 		}
 	}
 
-	getAllMessagesType(auth, json, res)
+	getAllMessagesType(auth, json)
 	{
 		var chatroomName = json.chatroom;
 		
 		if(this.authenticator.isValidChatroom(chatroomName))
 		{
 			var result = this.chatroommanager.getChatroomMessages(chatroomName);
-			this.respond(res, result);
+			this.respond(result);
 		}
 		else
 		{
-			this.error(res, "Invalid chatroom");
+			this.error("Invalid chatroom");
 		}
 	}
 
-	getAllChatroomNamesType(auth, json, res)
+	getAllChatroomNamesType(auth, json)
 	{
 		var result = this.chatroommanager.getAllChatroomNames();
-		this.respond(res, result);
+		this.respond(result);
 	}
 }
 

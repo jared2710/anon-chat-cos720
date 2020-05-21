@@ -5,6 +5,7 @@ class ChatroomManager
 {
 	constructor()
 	{
+		this.currentChatroom = null;
 	}
 
 	print()
@@ -42,17 +43,17 @@ class ChatroomManager
 	
 	getChatroomMessages(chatroomName)
 	{
-		var chatroom = new Chatroom(chatroomName);
-		var messages = chatroom.getChatroomMessages();
+		this.currentChatroom = new Chatroom(chatroomName);
+		var messages = this.currentChatroom.getChatroomMessages();
 		var result = messages.messages;
 		return result;
 	}
 	
 	addMessageToChatroom(chatroomName, auth, message)
 	{
-		var chatroom = new Chatroom(chatroomName);
-		chatroom.addMessageToChatroom(auth, message);
-		return true;
+		this.currentChatroom = new Chatroom(chatroomName);
+		var result = this.currentChatroom.addMessageToChatroom(auth, message);
+		return result;
 	}
 }
 

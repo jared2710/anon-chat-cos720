@@ -34,6 +34,8 @@ class ChatroomFileInterface
 		json.messages.push({"time":this.currentDate(), "user":pseudonym, "message":message});
 		
 		this.chatroomfile.writeMessages(json);
+		
+		return true;
 	}
 }
 
