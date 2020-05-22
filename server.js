@@ -11,6 +11,7 @@ handler = new Handler();
 
 app.get("/", (req, res) =>
 {	
+	req.body.auth = "";
 	req.body.type = "GETRequest";
 	handler.handle(req, res);
 });
