@@ -9,10 +9,10 @@ var Handler = require('./Handler');
 handler = new Handler();
 
 
-
 app.get("/", (req, res) =>
 {	
-	handler.error(res, "GET requests are not permitted");
+	req.body.type = "GETRequest";
+	handler.handle(req, res);
 });
 
 app.post("/", (req, res) =>

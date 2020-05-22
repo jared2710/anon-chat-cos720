@@ -40,7 +40,7 @@ class Handler
 					this.getAllChatroomNamesType(auth, json);
 					break;
 				default:
-					this.error("Invalid type for API");
+					this.error("Invalid request for API");
 			}
 		}
 		else
