@@ -12,7 +12,7 @@ handler = new Handler();
 app.get("/", (req, res) =>
 {	
 	req.body.auth = "00000000000000000000000000000000000000000000000000";
-	req.body.type = "GETRequest";
+	req.body.type = "GET";
 	handler.handle(req, res);
 });
 
